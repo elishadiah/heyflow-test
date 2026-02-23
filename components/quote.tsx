@@ -1,13 +1,23 @@
 "use client";
 
-import Script from "next/script";
+import { createElement, useEffect, useState } from "react";
 
 export function QuoteComponent() {
-    return (
-        <div>
-            <div id="heyflow-container" className="w-full max-w-2xl"></div>
+  const [mounted, setMounted] = useState(false);
 
-            <Script src="https://embed.heyflow.com/widget/4E1ANQvq0m7P4ru5OJ8S.js" strategy="afterInteractive" />
-        </div>
-    )
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <section className="mt-12 w-full min-h-[400px]" aria-label="Heyflow">
+      {mounted &&
+        createElement("heyflow-wrapper", {
+          "flow-id": "4E1ANQvq0m7P4ru5OJ8S",
+          "dynamic-height": true,
+          "scroll-up-on-navigation": true,
+          "style-config": '{"width":"800px"}',
+        })}
+    </section>
+  );
 }

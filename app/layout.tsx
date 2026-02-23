@@ -28,6 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          src="https://assets.prd.heyflow.com/builder/widget/latest/webview.js"
+          strategy="beforeInteractive"
+        />
         {children}
       </body>
     </html>
